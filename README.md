@@ -36,3 +36,5 @@ cr-bash --help
 cr-bash -v
 cr-bash --version
 ```
+
+---
