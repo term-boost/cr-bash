@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -e
+
+echo "Removing cr-bash..."
+
+if [[ "$EUID" -ne 0 ]]; then
+    SUDO="sudo"
+else
+    SUDO=""
+fi
+
+$SUDO rm -f /usr/local/bin/cr-bash
+$SUDO rm -f /usr/local/share/man/man1/cr-bash.1
+
+$SUDO mandb
+
+echo "Uninstalled."
