@@ -10,7 +10,10 @@ else
     SUDO=""
 fi
 
+$SUDO mkdir -p /usr/local/bin/
 $SUDO install -m 755 cr-bash /usr/local/bin/cr-bash
+
+$SUDO mkdir -p /usr/local/share/man/man1
 $SUDO install -m 644 cr-bash.1 /usr/local/share/man/man1/cr-bash.1
 
 $SUDO mandb
