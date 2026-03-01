@@ -35,6 +35,9 @@ cr-bash --help
 # Show version
 cr-bash -v
 cr-bash --version
+
+# man page
+man cr-bash
 ```
 
 ---
