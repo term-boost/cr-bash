@@ -1,0 +1,34 @@
+.TH CR-BASH 1 "March 2026" "User Commands"
+.SH NAME
+cr-bash \- create a new Bash script with shebang and open it in editor
+.SH SYNOPSIS
+.B cr-bash
+[options] filepath/filename
+.SH DESCRIPTION
+Creates a new Bash script at the specified path.
+
+If parent directories do not exist, they are created automatically.
+
+The file is initialized with:
+  - A shebang line: #!/usr/bin/env bash
+  - Two empty lines
+
+The file is made executable.
+
+If the file already exists, the command aborts.
+
+The file is opened in your default editor (\$EDITOR or vim).
+.SH OPTIONS
+.TP
+-h, --help
+Show usage information
+.TP
+-v, --version
+Show version information
+.SH EXIT STATUS
+Returns 1 if:
+  - No argument is provided
+  - The file already exists
+  - Directory creation fails
+.SH AUTHOR
+Leonardos Zinon Chatzigiachtsidis
