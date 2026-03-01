@@ -15,7 +15,7 @@
 
 * ```bash
   sudo mkdir -p /usr/local/lib/term-boost \
-  && sudo git clone https://github.com/term-boost/cr-bash.git /usr/local/lib/term-boost/cr-bash \
+  && if [ -d "/usr/local/lib/term-boost/cr-bash/.git" ]; then sudo git -C /usr/local/lib/term-boost/cr-bash pull; else sudo git clone https://github.com/term-boost/cr-bash.git /usr/local/lib/term-boost/cr-bash; fi \
   && (cd /usr/local/lib/term-boost/cr-bash && sudo ./install)
   ```
 
