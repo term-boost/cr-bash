@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+VERSION="0.0.1"
+
+# Function to display usage
+usage() {
+    cat <<EOF
+Usage: cr-bash [options] <filepath/filename>
+EOF
+}
+
+# Function to display help
+help() {
+    cat <<EOF
+Options:
+  -h, --help      Show this help message
+  -v, --version   Show version information
+
+Creates a new Bash script at the specified path with:
+  - Shebang line: #!/usr/bin/env bash
+  - Two empty lines
+  - Executable permission
+
+Parent directories will be created automatically if needed.
+If the file already exists, the command aborts.
+
+The file is opened in your default editor (\$EDITOR or vim).
+EOF
+}
+
+# Handle flags
+if [[ "${1:-}" == "-v" ]] || [[ "${1:-}" == "--version" ]]; then
+    echo "cr-bash $VERSION"
+    exit 0
+elif [[ "${1:-}" == "-h" ]] || [[ "${1:-}" == "--help" ]]; then
+    usage
+    help
+    exit 0
+fi
+
+file="${1:-}"
+
+# Check for argument
+if [[ -z "$file" ]]; then
+    usage
+    exit 1
+fi
+
+# Refuse to overwrite
+if [[ -e "$file" ]]; then
+    echo "Error: '$file' already exists. Aborting."
+    exit 1
+fi
+
+# Create parent directories
+mkdir -p "$(dirname "$file")"
+
+# Create file with shebang + 2 empty lines
+printf '#!/usr/bin/env bash\n\n\n' > "$file"
+
+# Make executable
+chmod +x "$file"
+
+# Open editor
+"${EDITOR:-vim}" "$file"
