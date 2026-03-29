@@ -6,6 +6,7 @@
 <!-- TOC -->
 * [CR - BASH](#cr---bash)
   * [INSTALLATION](#installation)
+    * [EXPERIMENTAL INSTALLATION](#experimental-installation)
   * [UNINSTALL](#uninstall)
   * [USAGE](#usage)
 <!-- TOC -->
@@ -16,7 +17,15 @@
 
 * ```bash
   sudo mkdir -p /usr/local/lib/term-boost \
-  && if [ -d "/usr/local/lib/term-boost/cr-bash/.git" ]; then sudo git -C /usr/local/lib/term-boost/cr-bash pull; else sudo git clone https://github.com/term-boost/cr-bash.git /usr/local/lib/term-boost/cr-bash; fi \
+  && if [ -d "/usr/local/lib/term-boost/cr-bash/.git" ]; then sudo git -C /usr/local/lib/term-boost/cr-bash pull; else sudo git clone -b main https://github.com/term-boost/cr-bash.git /usr/local/lib/term-boost/cr-bash; fi \
+  && (cd /usr/local/lib/term-boost/cr-bash && sudo ./install)
+  ```
+
+### EXPERIMENTAL INSTALLATION
+
+* ```bash
+  sudo mkdir -p /usr/local/lib/term-boost \
+  && if [ -d "/usr/local/lib/term-boost/cr-bash/.git" ]; then sudo git -C /usr/local/lib/term-boost/cr-bash pull; else sudo git clone -b develop https://github.com/term-boost/cr-bash.git /usr/local/lib/term-boost/cr-bash; fi \
   && (cd /usr/local/lib/term-boost/cr-bash && sudo ./install)
   ```
 
