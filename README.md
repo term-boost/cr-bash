@@ -6,6 +6,7 @@
 <!-- TOC -->
 * [CR - BASH](#cr---bash)
   * [INSTALLATION](#installation)
+  * [UNINSTALL](#uninstall)
   * [USAGE](#usage)
 <!-- TOC -->
 
@@ -17,6 +18,18 @@
   sudo mkdir -p /usr/local/lib/term-boost \
   && if [ -d "/usr/local/lib/term-boost/cr-bash/.git" ]; then sudo git -C /usr/local/lib/term-boost/cr-bash pull; else sudo git clone https://github.com/term-boost/cr-bash.git /usr/local/lib/term-boost/cr-bash; fi \
   && (cd /usr/local/lib/term-boost/cr-bash && sudo ./install)
+  ```
+
+---
+
+## UNINSTALL
+
+* ```bash
+  DIR="/usr/local/lib/term-boost/cr-bash"; \
+  [ -n "$DIR" ] && [ "$DIR" != "/" ] && [ -d "$DIR" ] && { \
+    [ -f "$DIR/uninstall" ] && (cd "$DIR" && sudo ./uninstall); sudo rm -rf "$DIR"; \
+  }; \
+  sudo rmdir /usr/local/lib/term-boost 2>/dev/null || true
   ```
 
 ---
